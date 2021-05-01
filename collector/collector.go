@@ -1,5 +1,7 @@
 package collector
 
+import "dedicatus545-be/core"
+
 type File interface {
 	FileInfo
 
@@ -11,20 +13,13 @@ type File interface {
 }
 
 type FileInfo interface {
-	// File name without extension
-	Title() string
+	// File name
+	Name() string
 
-	// File extension in lower case (e.g. pdf, epub, fb2)
-	Extension() string
-
-	// URL to the File path that can be used to download file
+	// URL to the File that can be used to download file
 	Path() string
 }
 
-type Repository interface {
-	Save(info FileInfo) error
-}
-
-func CollectFromTo(from File, to Repository) error {
+func CollectFromTo(from File, to core.Repository) error {
 	return nil
 }
