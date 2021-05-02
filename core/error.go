@@ -17,7 +17,11 @@ type errorWithMsg struct {
 }
 
 func (e errorWithMsg) Error() string {
-	return e.msg + ": " + e.clause.Error()
+	if e.clause == nil {
+		return e.msg
+	} else {
+		return e.msg + ": " + e.clause.Error()
+	}
 }
 
 func (e errorWithMsg) Unwrap() error {
